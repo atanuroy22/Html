@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Drag and Drop</title>
+    <style>
+      /* Style the draggable elements */
+      .draggable {
+        width: 100px;
+        height: 100px;
+        background-color: #f1f1f1;
+        border: 1px solid #d3d3d3;
+        cursor: move;
+      }
+      /* Style the drop zone */
+      .drop-zone {
+        width: 200px;
+        height: 200px;
+        background-color: #ccc;
+        border: 1px dashed #333;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Drag and Drop Example</h1>
+
+    <!-- Create the draggable elements -->
+    <div class="draggable" draggable="true">Draggable 1</div>
+    <div class="draggable" draggable="true">Draggable 2</div>
+    <div class="draggable" draggable="true">Draggable 3</div>
+
+    <!-- Create the drop zone -->
+    <div class="drop-zone">Drop Zone</div>
+
+    <script>
+      // Add event listeners for the drag and drop functionality
+      const draggables = document.querySelectorAll('.draggable');
+      const dropZone = document.querySelector('.drop-zone');
+
+      // Handle the dragstart event on the draggable elements
+      draggables.forEach(draggable => {
+        draggable.addEventListener('dragstart', e => {
+          e.dataTransfer.setData('text/plain', e.target.innerHTML);
+        });
+      });
+
+      // Handle the dragover event on the drop zone
+      dropZone.addEventListener('dragover', e => {
+        e.preventDefault();
+      });
+
+      // Handle the drop event on the drop zone
+      dropZone.addEventListener('drop', e => {
+        e.preventDefault();
+        const data = e.dataTransfer.getData('text/plain');
+        dropZone.innerHTML += data;
+      });
+    </script>
+  </body>
+</html>

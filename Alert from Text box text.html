@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>get the text of textArea</title>
+        <script src=
+"https://code.jquery.com/jquery-1.12.4.min.js">
+        </script>
+    </head>
+    <body>
+        <center>
+            <h1 style="color: rgb(103, 3, 156);">Please Enter Anything</h1>
+            <textarea id="txtArea"></textarea><br><br>
+            <button id="btn">Show Text</button>
+        </center>
+    </body>
+  
+    <script>
+        $(document).ready(function () {
+            
+        
+            $("#btn").click(function () {
+                var txt = $("#txtArea").val();
+                alert(txt);
+            });
+        });
+    </script>
+</html>
